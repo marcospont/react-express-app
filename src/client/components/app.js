@@ -1,37 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
-import './app.scss';
+import Header from './header/header';
+import TitlePane from './title-pane/title-pane';
+import ContextForm from './context-form/context-form';
 
-export default class App extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      greet: ''
-    };
-  }
+const styles = {
+	root: {
+		margin: '50px 100px'
+	}
+};
 
-  async componentDidMount() {
-    try {
-      const response = await fetch('/api/greet');
-
-      if (response.status !== 200) throw new Error('Error on API call');
-
-      this.setState({
-        greet: await response.text()
-      });
-    } catch ({ message }) {
-      console.log(message); //eslint-disable-line
-    }
-  }
-
-  render() {
-    const { greet } = this.state;
-
-    return (
-      <div>
-        <h1>React / Node.js - {greet}</h1>
-        <h2>Boilerplate </h2>
-      </div>
-    );
-  }
+@withStyles(styles)
+class App extends React.Component {
+	render() {
+		const { classes } = this.props;
+		return (
+			<div className={classes.root}>
+				<Header />
+				<ContextForm />
+				<TitlePane title="Profile">Profile</TitlePane>
+			</div>
+		);
+	}
 }
+
+export default App;
