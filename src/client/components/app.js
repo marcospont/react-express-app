@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 import Header from './header/header';
-import TitlePane from './title-pane/title-pane';
 import ContextForm from './context-form/context-form';
+import ProfileForm from './profile-form/profile-form';
 
 const styles = {
 	root: {
@@ -20,7 +20,7 @@ class App extends React.Component {
 			<div className={classes.root}>
 				<Header />
 				<ContextForm />
-				<TitlePane title="Profile">Profile</TitlePane>
+				<ProfileForm />
 			</div>
 		);
 	}
